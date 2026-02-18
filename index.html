@@ -3,93 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StormCraft | Officiële Website</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>StormCraft | De Ultieme Survival</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root { --main-color: #00FBFF; --bg-dark: #0f0f0f; }
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: #0a0a0a;
-            color: white;
-            text-align: center;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.imgur.com/8Qp2M6R.png'); /* Vervang dit door een screenshot van je eigen spawn */
-            background-size: cover;
-            background-attachment: fixed;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            margin: 0; padding: 0;
+            background: var(--bg-dark);
+            color: white; font-family: 'Roboto', sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            height: 100vh; overflow: hidden;
+            background-image: radial-gradient(circle at center, rgba(0, 251, 255, 0.15) 0%, rgba(0, 0, 0, 1) 80%);
         }
-        .container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 50px;
-            border-radius: 20px;
-            display: inline-block;
-            border: 2px solid #00FBFF;
+        .main-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 251, 255, 0.3);
+            box-shadow: 0 0 50px rgba(0, 251, 255, 0.1);
+            text-align: center;
+            max-width: 500px;
         }
         h1 {
-            font-size: 70px;
-            margin: 0;
-            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 65px; margin: 0;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: -2px;
+            line-height: 0.9;
         }
-        h1 span {
-            color: #00FBFF;
-        }
-        p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-        .btn {
-            background: #00FBFF;
-            color: black;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 10px;
-            font-size: 18px;
+        h1 span { color: var(--main-color); text-shadow: 0 0 20px rgba(0, 251, 255, 0.6); }
+        p { font-size: 18px; color: #bbb; margin: 20px 0 40px; }
+        
+        .ip-display {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed var(--main-color);
+            padding: 15px; border-radius: 10px;
+            font-weight: bold; font-family: monospace;
+            font-size: 20px; color: var(--main-color);
+            margin-bottom: 30px; cursor: pointer;
             transition: 0.3s;
-            cursor: pointer;
-            border: none;
-            margin: 10px;
-            display: inline-block;
         }
-        .btn:hover {
-            background: #fff;
-            transform: scale(1.05);
+        .ip-display:hover { background: rgba(0, 251, 255, 0.1); transform: translateY(-3px); }
+
+        .btn-group { display: flex; gap: 15px; justify-content: center; }
+        .btn {
+            padding: 12px 25px; border-radius: 8px;
+            text-decoration: none; font-weight: bold;
+            text-transform: uppercase; font-size: 14px;
+            transition: 0.3s; border: none; cursor: pointer;
         }
-        .ip-box {
-            margin-top: 20px;
-            font-family: monospace;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
+        .btn-discord { background: #5865F2; color: white; }
+        .btn-shop { background: var(--main-color); color: black; }
+        .btn:hover { transform: scale(1.1); filter: brightness(1.2); }
+
+        /* Kleine animatie voor de achtergrond */
+        .bg-glow {
+            position: absolute; width: 400px; height: 400px;
+            background: var(--main-color); filter: blur(150px);
+            opacity: 0.1; z-index: -1; animation: float 10s infinite alternate;
         }
+        @keyframes float { from { transform: translate(-50%, -50%); } to { transform: translate(50%, 50%); } }
     </style>
 </head>
 <body>
+    <div class="bg-glow"></div>
+    <div class="main-card">
+        <h1>STORM<br><span>CRAFT</span></h1>
+        <p>De meest unieke Survival ervaring met Teams, Daily Rewards en meer.</p>
+        
+        <div class="ip-display" onclick="copyIP()" title="Klik om te kopiëren">
+            PLAY.STORMCRAFT.NL
+        </div>
 
-    <div class="container">
-        <h1>STORM<span>CRAFT</span></h1>
-        <p>Dé leukste Survival server van Nederland!</p>
-        
-        <div class="ip-box" id="server-ip">play.stormcraft.nl</div><br><br>
-        
-        <button class="btn" onclick="copyIP()">KOPIEER IP</button>
-        <a href="https://discord.gg/jouwlink" class="btn" style="background: #7289da; color: white;">JOIN DISCORD</a>
-        <a href="https://shop.stormcraft.nl" class="btn" style="background: #f1c40f; color: black;">WEBSHOP</a>
+        <div class="btn-group">
+            <a href="https://discord.gg/jouwlink" class="btn btn-discord">Discord</a>
+            <a href="https://shop.stormcraft.nl" class="btn btn-shop">Webshop</a>
+        </div>
     </div>
 
     <script>
         function copyIP() {
-            var ip = "play.stormcraft.nl";
-            navigator.clipboard.writeText(ip);
-            alert("IP gekopieerd: " + ip);
+            navigator.clipboard.writeText("play.stormcraft.nl");
+            alert("IP Gekopieerd! Zie je zo op de server.");
         }
     </script>
-
 </body>
 </html>
