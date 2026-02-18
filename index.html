@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --cyan: #00FBFF; --dark: #020203; --discord: #5865F2; --yt: #FF0000; --tt: #ff0050; }
+        :root { --cyan: #00FBFF; --dark: #020203; --discord: #5865F2; }
         * { cursor: none !important; }
         #cursor { 
             width: 20px; height: 20px; border: 2px solid var(--cyan); 
@@ -20,7 +20,7 @@
         .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
         .hero-bg { 
             background: linear-gradient(rgba(2,2,3,0.5), rgba(2,2,3,1)), url('standard (11).gif'); 
-            background-size: cover; background-position: center; height: 65vh;
+            background-size: cover; background-position: center; height: 60vh;
         }
         .hero-title {
             background: linear-gradient(to bottom, #fff, var(--cyan));
@@ -31,7 +31,6 @@
         .neon-border:hover { border-color: var(--cyan); box-shadow: 0 0 30px rgba(0, 251, 255, 0.2); }
         .track-hard { letter-spacing: 0.4em; font-size: 10px; font-weight: 900; text-transform: uppercase; color: #777; }
         
-        /* Zwevende Discord Knop */
         .discord-float {
             position: fixed; bottom: 30px; right: 30px; z-index: 100;
             background: var(--discord); padding: 15px 25px; border-radius: 20px;
@@ -56,8 +55,9 @@
         <div class="hidden md:flex gap-8 track-hard">
             <a href="#" class="hover:text-white transition">Home</a>
             <a href="#hoe-joinen" class="hover:text-white transition">Joinen</a>
+            <a href="#staff" class="hover:text-white transition">Staff</a>
             <a href="#socials" class="hover:text-white transition">Socials</a>
-            <a href="#vote" class="hover:text-white transition">Voten</a>
+            <a href="#vote" class="hover:text-white transition text-[#00FBFF]">Voten</a>
         </div>
     </nav>
 
@@ -70,7 +70,7 @@
                 <div class="bg-white/5 p-4 rounded-xl flex items-center justify-between neon-border">
                     <div class="text-left font-sync italic">
                         <p class="text-[7px] text-gray-500 uppercase tracking-widest mb-1">Klik om IP te kopiëren</p>
-                        <p id="ip-text" class="text-lg md:text-xl italic uppercase tracking-tighter">PLAY.STORMCRAFT.NL</p>
+                        <p id="ip-text" class="text-lg md:text-xl italic uppercase tracking-tighter text-white">PLAY.STORMCRAFT.NL</p>
                     </div>
                     <div class="bg-[#00FBFF] text-black p-2 rounded-lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></div>
                 </div>
@@ -82,41 +82,67 @@
         <h2 class="font-sync text-2xl mb-12 italic text-center uppercase tracking-widest">Hoe kan ik <span class="text-[#00FBFF]">Joinen</span>?</h2>
         <div class="grid md:grid-cols-2 gap-8">
             <div class="glass p-8 rounded-[2.5rem] border-cyan-500/10">
-                <h3 class="font-sync text-lg mb-4 text-white">JAVA EDITION</h3>
-                <p class="text-gray-400 mb-4 italic">PC Spelers</p>
+                <h3 class="font-sync text-lg mb-2 text-white italic uppercase">JAVA EDITION</h3>
+                <p class="text-gray-400 mb-4 italic text-sm">PC / Mac</p>
                 <div class="p-4 bg-white/5 rounded-xl border border-white/5">
-                    <p class="text-sm font-mono text-cyan-400">IP: play.stormcraft.nl</p>
+                    <p class="text-sm font-mono text-cyan-400">Server Adres: play.stormcraft.nl</p>
                 </div>
             </div>
             <div class="glass p-8 rounded-[2.5rem] border-purple-500/10">
-                <h3 class="font-sync text-lg mb-4 text-white">BEDROCK / CONSOLE</h3>
-                <p class="text-gray-400 mb-4 italic">Telefoon, Tablet, Console</p>
+                <h3 class="font-sync text-lg mb-2 text-white italic uppercase">BEDROCK EDITION</h3>
+                <p class="text-gray-400 mb-4 italic text-sm">Console / Mobiel</p>
                 <div class="p-4 bg-white/5 rounded-xl border border-white/5">
-                    <p class="text-sm font-mono text-purple-400">IP: play.stormcraft.nl<br>Poort: 38385</p>
+                    <p class="text-sm font-mono text-purple-400 italic">Adres: play.stormcraft.nl<br>Poort: 38385</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="staff" class="py-24 px-8 max-w-6xl mx-auto border-t border-white/5">
+        <div class="text-center mb-16">
+            <h2 class="font-sync text-3xl mb-4 italic uppercase">HET <span class="text-[#00FBFF]">TEAM</span></h2>
+            <p class="text-gray-500 track-hard max-w-2xl mx-auto italic leading-loose">Onze staffleden zorgen ervoor dat StormCraft een veilige en plezante plek blijft voor iedereen. Heb je hulp nodig? Spreek ons aan in-game of op Discord!</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass p-8 rounded-[3rem] flex items-center gap-8 neon-border relative overflow-hidden group">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
+                <img src="https://mc-heads.net/avatar/Zentrixnl/100" class="w-20 h-20 rounded-2xl shadow-2xl relative z-10 group-hover:rotate-6 transition-transform">
+                <div class="text-left relative z-10">
+                    <p class="track-hard text-[#00FBFF] mb-1">Eigenaar & Developer</p>
+                    <h3 class="text-2xl font-sync italic uppercase tracking-tighter">Zentrixnl</h3>
+                    <p class="text-xs text-gray-500 mt-2 italic">Brein achter de server & techniek.</p>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-[3rem] flex items-center gap-8 neon-border relative overflow-hidden group">
+                <img src="https://mc-heads.net/avatar/Fendino_appel/100" class="w-20 h-20 rounded-2xl shadow-2xl relative z-10 group-hover:rotate-6 transition-transform">
+                <div class="text-left relative z-10">
+                    <p class="track-hard text-gray-500 mb-1">Moderator</p>
+                    <h3 class="text-2xl font-sync italic uppercase tracking-tighter">Fendino</h3>
+                    <p class="text-xs text-gray-500 mt-2 italic">Houdt de server gezellig en veilig.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="socials" class="py-20 px-8 max-w-4xl mx-auto border-t border-white/5 text-center">
-        <h2 class="font-sync text-xl mb-10 italic uppercase tracking-widest">Volg de <span class="text-[#00FBFF]">Storm</span></h2>
+        <h2 class="font-sync text-xl mb-10 italic uppercase tracking-widest">VOLG DE <span class="text-[#00FBFF]">STORM</span></h2>
         <div class="flex flex-wrap justify-center gap-6">
-            <a href="https://www.youtube.com/@stormcraftnl" target="_blank" class="glass px-8 py-4 rounded-2xl flex items-center gap-3 hover:border-red-500/50 transition-all">
+            <a href="https://www.youtube.com/@stormcraftnl" target="_blank" class="glass px-8 py-4 rounded-2xl flex items-center gap-3 hover:scale-105 transition-all">
                 <span class="text-red-500 text-xl">▶</span> <span class="track-hard text-white">YouTube</span>
             </a>
-            <a href="https://www.tiktok.com/@stormsmpnl?lang=nl-NL" target="_blank" class="glass px-8 py-4 rounded-2xl flex items-center gap-3 hover:border-pink-500/50 transition-all">
+            <a href="https://www.tiktok.com/@stormsmpnl?lang=nl-NL" target="_blank" class="glass px-8 py-4 rounded-2xl flex items-center gap-3 hover:scale-105 transition-all">
                 <span class="text-pink-500 text-xl">♪</span> <span class="track-hard text-white">TikTok</span>
             </a>
         </div>
     </section>
 
-    <section id="vote" class="py-20 px-8 max-w-6xl mx-auto border-t border-white/5 text-center">
-        <h2 class="font-sync text-2xl mb-10 italic uppercase">Voten</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="https://minecraftkrant.nl/serverlijst/stormcraft" target="_blank" class="glass p-6 rounded-3xl neon-border hover:bg-cyan-500/5 transition">🚀 Lijst 1</a>
-            <a href="https://topminecraftservers.org/server/42804" target="_blank" class="glass p-6 rounded-3xl neon-border hover:bg-cyan-500/5 transition">🔥 Lijst 2</a>
-            <a href="https://minecraft-mp.com/server-s354009" target="_blank" class="glass p-6 rounded-3xl neon-border hover:bg-cyan-500/5 transition">⚡ Lijst 3</a>
-            <a href="https://minecraftservers.org/server/683597" target="_blank" class="glass p-6 rounded-3xl neon-border hover:bg-cyan-500/5 transition">💎 Lijst 4</a>
+    <section id="vote" class="py-24 px-8 max-w-6xl mx-auto border-t border-white/5 text-center">
+        <h2 class="font-sync text-2xl mb-12 italic uppercase">VOTE VOOR <span class="text-[#00FBFF]">REWARDS</span></h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a href="https://minecraftkrant.nl/serverlijst/stormcraft" target="_blank" class="glass p-6 rounded-3xl neon-border hover:bg-cyan-500/5 transition italic uppercase text-xs track-hard">MinecraftKrant</a>
+            <a href="https://topminecraftservers.org/server/42804" target="_blank" class="glass p-6 rounded-3xl neon-border hover:bg-cyan-500/5 transition italic uppercase text-xs track-hard">TopMinecraft</a>
+            <a href="https://minecraft-mp.com/server-s354009" target="_blank" class="glass p-6 rounded-3xl neon-border hover:bg-cyan-500/5 transition italic uppercase text-xs track-hard">Minecraft-MP</a>
+            <a href="https://minecraftservers.org/server/683597" target="_blank" class="glass p-6 rounded-3xl neon-border hover:bg-cyan-500/5 transition italic uppercase text-xs track-hard">MC-Servers</a>
         </div>
     </section>
 
