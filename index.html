@@ -3,195 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StormCraft | De Storm Begint Hier</title>
+    <title>StormCraft | Premium Experience</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-        :root { --cyan: #00FBFF; --dark: #020203; --discord: #5865F2; }
+        :root { 
+            --cyan: #00FBFF; 
+            --royal-blue: #0A1128;
+            --dark: #020205; 
+            --discord: #5865F2; 
+        }
         
         body { 
-            background-color: var(--dark); 
+            background: radial-gradient(circle at top, var(--royal-blue) 0%, var(--dark) 70%);
             color: white; 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Luxe Bliksem Effect */
+        .lightning-flash {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; opacity: 0; pointer-events: none; z-index: 0;
+            animation: lightning 8s infinite;
+        }
+
+        @keyframes lightning {
+            0%, 95%, 100% { opacity: 0; }
+            96% { opacity: 0.05; }
+            97% { opacity: 0; }
+            98% { opacity: 0.1; }
+            99% { opacity: 0; }
         }
 
         /* Custom Cursor */
         #cursor { 
-            width: 20px; height: 20px; border: 2px solid var(--cyan); 
+            width: 25px; height: 25px; border: 2px solid var(--cyan); 
             border-radius: 50%; position: fixed; pointer-events: none; 
             z-index: 9999; transition: transform 0.1s ease-out;
-            box-shadow: 0 0 15px var(--cyan);
+            box-shadow: 0 0 20px var(--cyan), inset 0 0 10px var(--cyan);
         }
 
         .font-sync { font-family: 'Syncopate', sans-serif; }
 
-        /* Hero Image Glow */
+        /* Logo Luxe Glow */
         .logo-glow {
-            filter: drop-shadow(0 0 30px rgba(0, 251, 255, 0.4));
-            animation: pulse-glow 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 30px rgba(0, 251, 255, 0.6));
+            animation: pulse-glow 4s infinite ease-in-out;
+            border: 2px solid rgba(0, 251, 255, 0.2);
         }
 
         @keyframes pulse-glow {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 251, 255, 0.3)); transform: scale(1); }
-            50% { filter: drop-shadow(0 0 45px rgba(0, 251, 255, 0.6)); transform: scale(1.05); }
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 251, 255, 0.4)); transform: translateY(0px); }
+            50% { filter: drop-shadow(0 0 50px rgba(0, 251, 255, 0.8)); transform: translateY(-15px); }
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s;
+        .luxe-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 251, 255, 0.1);
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .glass-card:hover {
+        .luxe-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 251, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .luxe-card:hover::before { left: 100%; }
+
+        .luxe-card:hover {
             border-color: var(--cyan);
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 251, 255, 0.2);
+            transform: scale(1.02);
         }
 
         .hero-title {
-            background: linear-gradient(to bottom, #fff, var(--cyan));
+            background: linear-gradient(to bottom, #fff 40%, var(--cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: clamp(3rem, 12vw, 7rem);
+            font-size: clamp(3rem, 12vw, 8rem);
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
         }
 
-        .section-line {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            opacity: 0.3;
+        /* Nav-glass */
+        nav {
+            background: rgba(2, 2, 5, 0.7);
+            backdrop-blur: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
 <body>
     <div id="cursor" class="hidden md:block"></div>
+    <div class="lightning-flash"></div>
 
-    <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center bg-black/80 backdrop-blur-xl border-b border-white/5">
-        <div class="flex items-center gap-4">
-            <img src="StormCraft_discord_icon.png" class="w-10 h-10 rounded-xl border border-cyan-500/50 shadow-[0_0_10px_rgba(0,251,255,0.2)]">
-            <span class="font-sync text-xl tracking-tighter italic">STORM<span class="text-cyan-400 font-extrabold">CRAFT</span></span>
+    <nav class="fixed w-full z-50 px-8 py-5 flex justify-between items-center animate__animated animate__fadeInDown">
+        <div class="flex items-center gap-4 group cursor-pointer">
+            <img src="StormCraft_discord_icon.png" class="w-12 h-12 rounded-2xl border border-cyan-500/30 group-hover:scale-110 transition">
+            <span class="font-sync text-2xl tracking-tighter italic">STORM<span class="text-cyan-400 font-extrabold">CRAFT</span></span>
         </div>
-        <div class="hidden md:flex gap-10 font-sync text-[10px] tracking-[0.3em] uppercase items-center">
-            <a href="#" class="text-cyan-400">Home</a>
-            <a href="#features" class="hover:text-white transition">Features</a>
-            <a href="#staff" class="hover:text-white transition">Staff</a>
-            <a href="#store" class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500 transition">Store</a>
+        <div class="hidden md:flex gap-12 font-sync text-[11px] tracking-[0.4em] uppercase items-center">
+            <a href="#" class="text-cyan-400 hover:brightness-125 transition">Home</a>
+            <a href="#features" class="hover:text-cyan-400 transition">Info</a>
+            <a href="#staff" class="hover:text-cyan-400 transition">Team</a>
+            <a href="#store" class="px-6 py-2 bg-cyan-500/10 border border-cyan-500/50 rounded-full hover:bg-cyan-500 hover:text-black transition duration-500">Shop</a>
         </div>
     </nav>
 
-    <header class="relative min-h-screen flex flex-col items-center justify-center text-center pt-20">
-        <div class="max-w-4xl px-4 animate__animated animate__fadeIn">
-            <img src="StormCraft_discord_icon.png" class="w-32 md:w-48 mb-8 mx-auto logo-glow rounded-[2rem]">
+    <header class="relative min-h-screen flex flex-col items-center justify-center text-center pt-24 px-4 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 blur-[150px] rounded-full"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 blur-[150px] rounded-full"></div>
+
+        <div class="max-w-5xl z-10">
+            <img src="StormCraft_discord_icon.png" class="w-40 md:w-56 mb-12 mx-auto logo-glow rounded-[2.5rem] shadow-2xl animate__animated animate__zoomIn">
             
-            <div class="mb-6 inline-flex items-center gap-3 px-6 py-2 border border-cyan-500/30 bg-cyan-500/5 rounded-full backdrop-blur-md">
+            <div class="mb-8 inline-flex items-center gap-4 px-8 py-3 luxe-card rounded-full">
                 <span class="relative flex h-3 w-3">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
                 </span>
-                <span class="text-xs font-sync tracking-widest text-cyan-400"><span id="player-count">0</span> SPELERS ONLINE</span>
+                <span class="text-sm font-sync tracking-[0.2em] text-white">
+                    STATUS: <span id="player-count" class="text-cyan-400">0</span> <span class="text-gray-400">ONTDEKKERS</span>
+                </span>
             </div>
 
-            <h1 class="font-sync italic uppercase hero-title leading-none mb-6 tracking-tighter">STORM<br>CRAFT</h1>
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 italic">
-                De ultieme cross-play ervaring. Ontdek een wereld vol custom features, 
-                krachtige hardware en een stormachtige community.
+            <h1 class="font-sync italic uppercase hero-title leading-none mb-8 tracking-tighter animate__animated animate__fadeInUp">
+                STORM<br><span class="text-[0.8em]">CRAFT</span>
+            </h1>
+            
+            <p class="text-gray-300 text-lg md:text-2xl max-w-3xl mx-auto mb-16 italic font-light tracking-wide leading-relaxed">
+                Stap in een wereld waar luxe en avontuur samenkomen. Onze hardware is de bliksem, de community is de donder.
             </p>
 
-            <div id="copy-btn" class="glass-card p-2 rounded-2xl w-full max-w-sm mx-auto cursor-pointer border-cyan-500/20 group">
-                <div class="bg-white/5 p-4 rounded-xl flex items-center justify-between group-hover:bg-cyan-500/10 transition">
+            <div id="copy-btn" class="luxe-card p-1 rounded-[2rem] w-full max-w-md mx-auto cursor-pointer group">
+                <div class="bg-black/40 p-5 rounded-[1.8rem] flex items-center justify-between group-hover:bg-cyan-500/5 transition duration-500">
                     <div class="text-left font-sync italic">
-                        <p class="text-[8px] text-gray-500 uppercase tracking-widest mb-1">Klik om IP te kopiëren</p>
-                        <p id="ip-text" class="text-xl md:text-2xl italic uppercase tracking-tighter text-white">PLAY.STORMCRAFT.NL</p>
+                        <p class="text-[9px] text-cyan-500 font-bold uppercase tracking-[0.3em] mb-1">Kopieer Server Adres</p>
+                        <p id="ip-text" class="text-xl md:text-3xl italic uppercase tracking-tighter text-white font-black">PLAY.STORMCRAFT.NL</p>
                     </div>
-                    <div class="bg-cyan-500 text-black p-3 rounded-xl shadow-[0_0_15px_rgba(0,251,255,0.4)]">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <div class="bg-cyan-500 text-black p-4 rounded-2xl shadow-[0_0_20px_rgba(0,251,255,0.5)] group-hover:rotate-12 transition">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="section-line"></div>
-
-    <section id="features" class="py-24 px-8 max-w-7xl mx-auto">
-        <h2 class="font-sync text-2xl text-center mb-16 italic uppercase tracking-widest">Waarom <span class="text-cyan-400">StormCraft</span>?</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass-card p-10 rounded-[2.5rem] text-center">
-                <div class="text-4xl mb-6">⚡</div>
-                <h3 class="font-sync text-lg mb-4 text-white italic">LAG-VRIJ</h3>
-                <p class="text-gray-500 text-sm leading-relaxed italic">Dankzij onze eigen krachtige OVH-hardware geniet jij van de hoogste TPS, ongeacht hoe groot je farms zijn.</p>
+    <section id="features" class="py-32 px-8 max-w-7xl mx-auto relative z-10">
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="luxe-card p-12 rounded-[3rem] text-center group">
+                <div class="text-5xl mb-8 group-hover:scale-125 transition duration-500">💎</div>
+                <h3 class="font-sync text-xl mb-6 text-cyan-400 italic font-black">LUXE HARDWARE</h3>
+                <p class="text-gray-400 text-base leading-relaxed italic">Geen concessies. Wij draaien op high-end OVH machines voor een ervaring zonder enige hapering.</p>
             </div>
-            <div class="glass-card p-10 rounded-[2.5rem] text-center border-cyan-500/20">
-                <div class="text-4xl mb-6">🎮</div>
-                <h3 class="font-sync text-lg mb-4 text-white italic">CROSS-PLAY</h3>
-                <p class="text-gray-400 text-sm leading-relaxed italic">Of je nu op PC (Java) zit of op je PlayStation/Mobiel (Bedrock), je speelt samen in dezelfde wereld.</p>
+            <div class="luxe-card p-12 rounded-[3rem] text-center border-cyan-500/30 bg-cyan-500/5">
+                <div class="text-5xl mb-8">⚡</div>
+                <h3 class="font-sync text-xl mb-6 text-white italic font-black">STORM UPDATES</h3>
+                <p class="text-gray-200 text-base leading-relaxed italic">Wekelijks nieuwe features, custom plugins en events die de server levendig houden.</p>
             </div>
-            <div class="glass-card p-10 rounded-[2.5rem] text-center">
-                <div class="text-4xl mb-6">🛠️</div>
-                <h3 class="font-sync text-lg mb-4 text-white italic">CUSTOM PLUGINS</h3>
-                <p class="text-gray-500 text-sm leading-relaxed italic">Van chat games tot custom economie; wij bouwen unieke systemen die je nergens anders vindt.</p>
+            <div class="luxe-card p-12 rounded-[3rem] text-center group">
+                <div class="text-5xl mb-8 group-hover:scale-125 transition duration-500">🌍</div>
+                <h3 class="font-sync text-xl mb-6 text-cyan-400 italic font-black">GRENZELOOS</h3>
+                <p class="text-gray-400 text-base leading-relaxed italic">Java of Bedrock? Het maakt niet uit. Onze wereld is toegankelijk voor iedereen, overal.</p>
             </div>
         </div>
     </section>
 
-    <section id="store" class="py-24 px-8 max-w-5xl mx-auto">
-        <div class="glass-card p-12 rounded-[3.5rem] bg-gradient-to-br from-cyan-500/10 to-transparent border-cyan-500/30 text-center relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-10 opacity-10 font-sync text-8xl italic">STORE</div>
-            <h2 class="font-sync text-3xl mb-4 italic uppercase">DE <span class="text-cyan-400 underline">WINKEL</span> KOMT ERAAN</h2>
-            <p class="text-gray-400 max-w-xl mx-auto italic mb-8">
-                We zijn momenteel druk bezig met het inrichten van onze store. Binnenkort kun je hier terecht voor vette ranks, keys en boosts om je avontuur te versnellen!
-            </p>
-            <div class="inline-block px-8 py-4 border border-dashed border-cyan-500/50 rounded-2xl text-cyan-400 font-sync text-xs tracking-[0.3em]">
-                COMING LATER IN 2026
+    <section id="store" class="py-24 px-8 max-w-6xl mx-auto">
+        <div class="luxe-card p-16 rounded-[4rem] bg-gradient-to-r from-cyan-900/20 to-transparent border-cyan-500/40 text-left relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="z-10">
+                <h2 class="font-sync text-4xl mb-6 italic uppercase font-black">STORM<span class="text-cyan-400 underline">SHOP</span></h2>
+                <p class="text-gray-300 max-w-md italic text-lg mb-8 leading-relaxed">
+                    Exclusieve ranks, custom pets en unieke boosts. Onze store wordt momenteel tot in de puntjes geperfectioneerd.
+                </p>
+                <div class="inline-flex items-center gap-4 px-8 py-4 bg-white/5 rounded-2xl border border-white/10 text-white font-sync text-xs tracking-[0.4em]">
+                   STATUS: <span class="text-cyan-400 animate-pulse">UNDER CONSTRUCTION</span>
+                </div>
             </div>
+            <div class="text-8xl opacity-10 font-sync italic -rotate-12 hidden md:block">LUXE</div>
         </div>
     </section>
 
-    <section id="staff" class="py-24 px-8 max-w-6xl mx-auto">
-        <h2 class="font-sync text-2xl text-center mb-16 italic uppercase tracking-widest text-gray-500">HET TEAM</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="glass-card p-8 rounded-[3rem] flex items-center gap-8 group">
+    <section id="staff" class="py-32 px-8 max-w-6xl mx-auto">
+        <h2 class="font-sync text-3xl text-center mb-24 italic uppercase tracking-[0.5em] text-cyan-400/50">THE FOUNDERS</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="luxe-card p-10 rounded-[3.5rem] flex items-center gap-10 group cursor-pointer">
                 <div class="relative">
-                    <img src="https://mc-heads.net/avatar/Zentrixnl/100" class="w-16 h-16 rounded-2xl group-hover:rotate-12 transition duration-500 relative z-10">
-                    <div class="absolute inset-0 bg-cyan-400/20 blur-xl rounded-full"></div>
+                    <img src="https://mc-heads.net/avatar/Zentrixnl/120" class="w-24 h-24 rounded-3xl group-hover:scale-110 transition duration-500 relative z-10 shadow-2xl">
+                    <div class="absolute inset-0 bg-cyan-400/30 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
-                <div class="text-left">
-                    <p class="font-sync text-[8px] text-cyan-400 mb-1 tracking-widest uppercase">Eigenaar & Dev</p>
-                    <h3 class="text-xl font-sync italic uppercase tracking-tighter">Zentrixnl</h3>
+                <div>
+                    <p class="font-sync text-[10px] text-cyan-400 mb-2 tracking-[0.3em] uppercase font-black">Owner & Architect</p>
+                    <h3 class="text-3xl font-sync italic uppercase tracking-tighter">Zentrixnl</h3>
                 </div>
             </div>
-            <div class="glass-card p-8 rounded-[3rem] flex items-center gap-8 group">
-                <img src="https://mc-heads.net/avatar/Fendino_appel/100" class="w-16 h-16 rounded-2xl opacity-60 group-hover:rotate-12 transition duration-500">
-                <div class="text-left">
-                    <p class="font-sync text-[8px] text-gray-500 mb-1 tracking-widest uppercase">Moderator</p>
-                    <h3 class="text-xl font-sync italic uppercase tracking-tighter">Fendino</h3>
+            <div class="luxe-card p-10 rounded-[3.5rem] flex items-center gap-10 group cursor-pointer">
+                <img src="https://mc-heads.net/avatar/Fendino_appel/120" class="w-24 h-24 rounded-3xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition duration-500 shadow-2xl">
+                <div>
+                    <p class="font-sync text-[10px] text-gray-500 mb-2 tracking-[0.3em] uppercase font-black">Moderator</p>
+                    <h3 class="text-3xl font-sync italic uppercase tracking-tighter text-white/80">Fendino</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 text-center opacity-30">
-        <img src="StormCraft_discord_icon.png" class="w-8 h-8 mx-auto mb-6 grayscale">
-        <p class="font-sync text-[10px] tracking-[0.5em]">STORMCRAFT.NL © 2026</p>
+    <footer class="py-32 text-center relative overflow-hidden">
+        <div class="section-line mb-20"></div>
+        <img src="StormCraft_discord_icon.png" class="w-16 h-16 mx-auto mb-10 grayscale opacity-20 hover:opacity-100 hover:grayscale-0 transition duration-1000">
+        <p class="font-sync text-[12px] tracking-[0.8em] text-gray-600">STORMCRAFT.NL — MMXXVI</p>
     </footer>
 
     <script>
-        // Cursor effect
+        // Smooth Cursor
         const cursor = document.getElementById('cursor');
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Copy IP
+        // Copy IP met Luxe Feedback
         document.getElementById('copy-btn').addEventListener('click', function() {
             const ip = "play.stormcraft.nl";
             const textEl = document.getElementById('ip-text');
             navigator.clipboard.writeText(ip).then(() => {
                 const original = textEl.innerText;
-                textEl.innerText = "GEKOPIEERD!";
+                textEl.innerText = "COPIED TO CLIPBOARD";
                 textEl.style.color = "#00FBFF";
                 setTimeout(() => { 
                     textEl.innerText = original; 
