@@ -4,174 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StormCraft | Official Survival</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --cyan: #00FBFF;
-            --dark: #0a0a0b;
-            --gray: #1a1a1c;
+            --purple-glow: rgba(0, 251, 255, 0.3);
+            --bg: #050506;
+            --card-bg: rgba(255, 255, 255, 0.03);
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: var(--dark);
+            background-color: var(--bg);
             color: white;
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
         }
 
-        /* Achtergrond met overlay */
+        /* Navigatiebalk */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 80%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav .logo {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 22px;
+            color: var(--cyan);
+            text-transform: uppercase;
+        }
+
+        nav .links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav .links a:hover { color: var(--cyan); }
+
+        /* Hero Sectie */
         .hero {
             height: 100vh;
-            width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(10,10,11,1)), 
-                        url('https://images.wallpapersden.com/image/download/minecraft-night-view-hd_bWhtZ2uUmZqaraWkpJRmbmdlrWZlbWU.jpg');
+            background: linear-gradient(0deg, var(--bg) 0%, rgba(5,5,6,0.5) 50%, rgba(5,5,6,0.2) 100%), 
+                        url('https://wallpaperaccess.com/full/1151245.jpg'); /* VERVANG DOOR JOUW SCREENSHOT */
             background-size: cover;
             background-position: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             text-align: center;
+            padding: 0 20px;
         }
 
-        .logo-area h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 80px;
-            margin: 0;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-        }
-
-        .logo-area h1 span {
+        .online-count {
+            background: rgba(0, 251, 255, 0.1);
+            border: 1px solid var(--cyan);
             color: var(--cyan);
-            text-shadow: 0 0 30px rgba(0, 251, 255, 0.5);
-        }
-
-        .tagline {
-            font-size: 20px;
-            letter-spacing: 2px;
-            color: #ccc;
-            margin-top: -10px;
-            margin-bottom: 40px;
-        }
-
-        /* IP Box */
-        .ip-container {
-            background: var(--gray);
-            padding: 20px 40px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 251, 255, 0.2);
-            cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .ip-container:hover {
-            border-color: var(--cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 251, 255, 0.1);
-        }
-
-        .ip-text {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 24px;
-            color: var(--cyan);
-        }
-
-        .join-sub {
+            padding: 8px 20px;
+            border-radius: 50px;
             font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px var(--purple-glow);
+        }
+
+        h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(40px, 8vw, 90px);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        h1 span {
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+
+        .hero p {
+            max-width: 600px;
             color: #888;
-            text-transform: uppercase;
+            font-size: 18px;
+            margin: 20px 0 40px;
         }
 
-        /* Knoppen */
-        .nav-links {
-            margin-top: 50px;
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn {
-            text-decoration: none;
-            padding: 15px 35px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .btn-discord { background: #5865F2; color: white; }
-        .btn-shop { border: 2px solid var(--cyan); color: var(--cyan); }
-
-        .btn:hover {
-            transform: scale(1.05);
-            filter: brightness(1.2);
-        }
-
-        /* Footer / Info */
-        .features {
-            padding: 100px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .card {
-            background: var(--gray);
+        /* IP Box - DionSMP Style */
+        .ip-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 20px;
-            text-align: left;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
         }
 
-        .card h3 { color: var(--cyan); margin-top: 0; }
+        .ip-box:hover {
+            border-color: var(--cyan);
+            background: rgba(0, 251, 255, 0.02);
+        }
+
+        .ip-details { text-align: left; }
+        .ip-details span { display: block; }
+        .ip-label { font-size: 12px; color: #555; text-transform: uppercase; font-weight: 800; }
+        .ip-address { font-size: 24px; font-weight: 800; color: var(--cyan); }
+
+        .copy-btn {
+            background: var(--cyan);
+            color: black;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin: -50px auto 100px;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 20px;
+            border-radius: 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card h2 { font-size: 32px; margin: 0; color: white; }
+        .stat-card p { font-size: 12px; color: #555; text-transform: uppercase; font-weight: 800; margin-top: 5px; }
+
+        @media (max-width: 768px) {
+            nav .links { display: none; }
+            h1 { font-size: 50px; }
+        }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="logo">StormCraft</div>
+        <div class="links">
+            <a href="#">Home</a>
+            <a href="https://shop.stormcraft.nl">Shop</a>
+            <a href="#">Statistieken</a>
+            <a href="#">Regels</a>
+        </div>
+    </nav>
+
     <section class="hero">
-        <div class="logo-area">
-            <h1>STORM<span>CRAFT</span></h1>
-            <p class="tagline">TEAMS • SURVIVAL • ECONOMY</p>
-        </div>
+        <div class="online-count">● 18 Spelers Online</div>
+        <h1>STORM<span>CRAFT</span></h1>
+        <p>Vorm legendarische teams, bouw machtige bases en heers over de survival wereld van StormCraft.</p>
 
-        <div class="ip-container" onclick="copyIP()">
-            <span class="join-sub">Klik om IP te kopiëren</span>
-            <span class="ip-text">PLAY.STORMCRAFT.NL</span>
-        </div>
-
-        <div class="nav-links">
-            <a href="https://discord.gg/jouwlink" class="btn btn-discord">Discord</a>
-            <a href="https://shop.stormcraft.nl" class="btn btn-shop">Webshop</a>
+        <div class="ip-box" onclick="copyIP()">
+            <div class="ip-details">
+                <span class="ip-label">Server IP</span>
+                <span class="ip-address">PLAY.STORMCRAFT.NL</span>
+            </div>
+            <div class="copy-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </div>
         </div>
     </section>
 
-    <section class="features">
-        <div class="card">
-            <h3>⚔️ Teams Update</h3>
-            <p>Vorm een team met je vrienden, claim je land en word de machtigste groep van de server.</p>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h2>1.4K</h2>
+            <p>Totale Spelers</p>
         </div>
-        <div class="card">
-            <h3>💎 Daily Rewards</h3>
-            <p>Log elke dag in en claim je gratis loot. Hoe langer je streak, hoe beter de beloningen!</p>
+        <div class="stat-card">
+            <h2>84</h2>
+            <p>Teams Gemaakt</p>
         </div>
-        <div class="card">
-            <h3>🗳️ Vote & Win</h3>
-            <p>Help de server groeien door te voten en ontvang direct keys en in-game geld.</p>
+        <div class="stat-card" style="border-color: var(--cyan);">
+            <h2 style="color: var(--cyan);">24/7</h2>
+            <p>Uptime</p>
         </div>
-    </section>
+    </div>
 
     <script>
         function copyIP() {
             navigator.clipboard.writeText("play.stormcraft.nl");
-            alert("IP Gekopieerd naar klembord! Tot zo op StormCraft.");
+            alert("IP Gekopieerd! Zie je zo op StormCraft.");
         }
     </script>
-
 </body>
 </html>
