@@ -2,76 +2,114 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>StormCraft | De Ultieme Survival</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StormCraft | Officiële Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { background: #020203; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glow-cyan { box-shadow: 0 0 40px rgba(0, 251, 255, 0.2); }
-        .text-glow { text-shadow: 0 0 15px rgba(0, 251, 255, 0.5); }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .gradient-bg { background: radial-gradient(circle at top, #0a1112 0%, #020203 100%); }
+        body { background-color: #030304; color: white; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .font-sync { font-family: 'Syncopate', sans-serif; }
+        .cyan-glow { text-shadow: 0 0 20px rgba(0, 251, 255, 0.6); }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .cyan-border { border-color: #00FBFF; }
+        
+        /* De achtergrond met jouw gif/banner */
+        .hero-bg { 
+            background: linear-gradient(rgba(3,3,4,0.8), rgba(3,3,4,1)), url('standard (11).gif'); 
+            background-size: cover; background-position: center;
+        }
+        .staff-card img { filter: drop-shadow(0 0 10px rgba(0, 251, 255, 0.3)); }
     </style>
 </head>
-<body class="gradient-bg text-white min-h-screen">
+<body>
 
-    <nav class="flex justify-between items-center px-10 py-8 max-w-7xl mx-auto">
-        <div class="text-2xl font-black tracking-tighter italic">STORM<span class="text-[#00FBFF]">CRAFT</span></div>
-        <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
+    <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center glass border-b border-white/5">
+        <div class="flex items-center gap-3">
+            <img src="StormCraft_discord_icon.png" alt="Logo" class="w-10 h-10 rounded-lg">
+            <span class="font-sync text-lg tracking-widest text-[#00FBFF]">STORMCRAFT</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em]">
             <a href="#" class="hover:text-[#00FBFF] transition">Home</a>
-            <a href="https://shop.stormcraft.nl" class="hover:text-[#00FBFF] transition">Webshop</a>
-            <a href="https://discord.gg/jouwlink" class="hover:text-[#00FBFF] transition">Discord</a>
+            <a href="#about" class="hover:text-[#00FBFF] transition">Over Ons</a>
+            <a href="#staff" class="hover:text-[#00FBFF] transition">Staff</a>
+            <a href="#join" class="hover:text-[#00FBFF] transition text-[#00FBFF]">Join Nu</a>
         </div>
     </nav>
 
-    <main class="flex flex-col items-center justify-center pt-20 pb-32 px-6 text-center">
-        <div class="glass px-5 py-2 rounded-full text-[10px] font-bold tracking-[0.3em] uppercase text-[#00FBFF] mb-8 border-[#00FBFF]/20">
-            ● Server is online
-        </div>
-
-        <h1 class="text-7xl md:text-9xl font-extrabold tracking-tighter mb-6">
-            STORM<span class="text-[#00FBFF] text-glow">CRAFT</span>
-        </h1>
+    <header class="hero-bg min-h-screen flex flex-col items-center justify-center text-center px-4">
+        <img src="StormCraft_discord_icon.png" alt="StormCraft Logo" class="w-48 md:w-64 mb-8 drop-shadow-[0_0_50px_rgba(0,251,255,0.4)] animate-pulse">
+        <h1 class="font-sync text-5xl md:text-8xl mb-4 tracking-tighter italic italic">STORM<span class="text-[#00FBFF] cyan-glow">CRAFT</span></h1>
+        <p class="max-w-2xl text-gray-400 text-lg mb-12 font-medium">Beleef de meest stormachtige survival van Nederland. Vorm teams, domineer de economy en overleef de storm.</p>
         
-        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-12 font-medium">
-            Verover de wereld, bouw je basis en domineer de ranglijsten in onze unieke Teams Survival.
-        </p>
-
-        <div onclick="copyIP()" class="glass glow-cyan group p-1 rounded-[2rem] cursor-pointer transition-all duration-500 hover:scale-105">
-            <div class="bg-white/5 rounded-[1.9rem] px-10 py-6 flex items-center gap-10">
-                <div class="text-left">
-                    <span class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Klik om te kopiëren</span>
-                    <span class="block text-3xl font-black text-[#00FBFF] tracking-tight">PLAY.STORMCRAFT.NL</span>
-                </div>
-                <div class="bg-[#00FBFF] text-black p-4 rounded-2xl group-hover:rotate-12 transition-transform">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                </div>
+        <div onclick="copyIP()" class="glass p-6 rounded-[2rem] flex items-center justify-between w-full max-w-lg cursor-pointer hover:scale-105 transition-all border-[#00FBFF]/20 hover:border-[#00FBFF]">
+            <div class="text-left">
+                <p class="text-[10px] font-black text-[#00FBFF] uppercase tracking-[0.2em] mb-1">Server Adres</p>
+                <p class="font-sync text-xl md:text-2xl italic">PLAY.STORMCRAFT.NL</p>
+            </div>
+            <div class="bg-[#00FBFF] p-4 rounded-2xl text-black shadow-[0_0_20px_rgba(0,251,255,0.4)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             </div>
         </div>
-    </main>
+    </header>
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 pb-20">
-        <div class="glass p-10 rounded-[2.5rem] hover:bg-white/5 transition">
-            <div class="text-[#00FBFF] text-3xl mb-4">⚔️</div>
-            <h3 class="text-xl font-bold mb-2">Teams Update</h3>
-            <p class="text-gray-500 text-sm">Nieuwe team-systemen voor een betere samenwerking.</p>
-        </div>
-        <div class="glass p-10 rounded-[2.5rem] hover:bg-white/5 transition">
-            <div class="text-[#00FBFF] text-3xl mb-4">💎</div>
-            <h3 class="text-xl font-bold mb-2">Daily Loot</h3>
-            <p class="text-gray-500 text-sm">Elke dag vette prijzen als je inlogt op de server.</p>
-        </div>
-        <div class="glass p-10 rounded-[2.5rem] hover:bg-white/5 transition">
-            <div class="text-[#00FBFF] text-3xl mb-4">🏆</div>
-            <h3 class="text-xl font-bold mb-2">Top Ranks</h3>
-            <p class="text-gray-500 text-sm">Strijd om de eerste plek op onze leaderboard.</p>
+    <section id="join" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="glass p-10 rounded-[3rem] border-[#00FBFF]/10">
+                <h2 class="font-sync text-3xl mb-6"><span class="text-[#00FBFF]">HOE</span> JOIN JE?</h2>
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <span class="bg-[#00FBFF] text-black w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                        <div>
+                            <p class="font-bold">Versie</p>
+                            <p class="text-sm text-gray-400">Start Minecraft Java Edition op versie **1.20.1** (of hoger).</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <span class="bg-[#00FBFF] text-black w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                        <div>
+                            <p class="font-bold">Multiplayer</p>
+                            <p class="text-sm text-gray-400">Klik op 'Add Server' en voer het IP in.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-right">
+                <h2 class="font-sync text-5xl mb-4 italic text-white/10">PLAY NOW</h2>
+                <p class="text-gray-400">StormCraft is toegankelijk voor zowel Java als Bedrock spelers. Gebruik poort 19132 voor Bedrock!</p>
+            </div>
         </div>
     </section>
+
+    <section id="about" class="py-24 bg-white/5">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="font-sync text-3xl mb-8">HET <span class="text-[#00FBFF]">ONTSTAAN</span></h2>
+            <p class="text-gray-300 leading-relaxed text-lg">
+                StormCraft is gestart met één visie: een survival wereld creëren waar de speler echt centraal staat. 
+                Wat begon als een klein project tussen vrienden, is uitgegroeid tot een krachtige community. 
+                Onze server is gebouwd op stabiliteit, eerlijkheid en vooral: pure chaos en plezier in de vorm van onze unieke Teams-survival.
+            </p>
+        </div>
+    </section>
+
+    <section id="staff" class="py-24 px-6 max-w-6xl mx-auto">
+        <h2 class="font-sync text-3xl mb-16 text-center italic">STORM<span class="text-[#00FBFF]">TEAM</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="glass p-6 rounded-[2.5rem] text-center border-white/5">
+                <img src="https://mc-heads.net/avatar/Milan/100" class="w-20 mx-auto mb-4 rounded-2xl" alt="Milan">
+                <p class="text-[9px] font-black text-[#00FBFF] uppercase tracking-widest mb-1">Eigenaar</p>
+                <h3 class="font-bold">Milan</h3>
+            </div>
+            </div>
+    </section>
+
+    <footer class="py-12 text-center text-gray-600 text-[10px] font-bold uppercase tracking-[0.3em]">
+        &copy; 2026 StormCraft Network • Design by Gemini
+    </footer>
 
     <script>
         function copyIP() {
             navigator.clipboard.writeText("play.stormcraft.nl");
-            alert("IP Gekopieerd! Tot zo op de server.");
+            alert("IP gekopieerd naar klembord! Tot zo in de storm.");
         }
     </script>
 </body>
