@@ -3,161 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StormCraft | De Meest Unieke Survival</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>StormCraft | Official</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --cyan: #00FBFF;
-            --bg: #050506;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
-        body {
-            margin: 0; padding: 0;
-            background-color: var(--bg);
-            color: white; font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        /* Navigatie */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 10%; background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(15px); position: fixed;
-            width: 80%; z-index: 1000; border-bottom: 1px solid var(--border);
-        }
-
-        .logo { font-family: 'Syncopate', sans-serif; font-size: 22px; color: var(--cyan); letter-spacing: 2px; }
-
-        .links a {
-            color: white; text-decoration: none; margin-left: 30px;
-            font-size: 13px; font-weight: 700; text-transform: uppercase; transition: 0.3s;
-        }
-        .links a:hover { color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
-
-        /* Hero */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(0deg, var(--bg) 0%, rgba(5,5,6,0.4) 50%, rgba(5,5,6,0.1) 100%), 
-                        url('https://wallpaperaccess.com/full/1151245.jpg'); /* VERVANG DEZE LINK DOOR JE EIGEN SCREENSHOT */
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-        }
-
-        .online-tag {
-            background: rgba(0, 251, 255, 0.1); border: 1px solid var(--cyan);
-            color: var(--cyan); padding: 8px 25px; border-radius: 50px;
-            font-size: 11px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px;
-        }
-
-        h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(40px, 8vw, 85px); margin: 0; letter-spacing: -3px; }
-        h1 span { color: transparent; -webkit-text-stroke: 1px white; opacity: 0.5; }
-
-        /* IP Box */
-        .ip-box {
-            background: var(--card-bg); border: 1px solid var(--border);
-            padding: 25px 40px; border-radius: 24px; width: 100%; max-width: 550px;
-            display: flex; justify-content: space-between; align-items: center;
-            margin-top: 40px; cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .ip-box:hover { border-color: var(--cyan); transform: scale(1.02); background: rgba(0, 251, 255, 0.02); }
-        .ip-address { font-size: 26px; font-weight: 800; color: var(--cyan); font-family: 'Syncopate', sans-serif; }
-        .copy-icon { background: var(--cyan); color: black; padding: 12px; border-radius: 12px; display: flex; }
-
-        /* Spelers Zoeken Sectie */
-        .search-section { padding: 100px 10%; text-align: center; }
-        .search-container {
-            max-width: 800px; margin: 0 auto; background: var(--card-bg);
-            padding: 40px; border-radius: 30px; border: 1px solid var(--border);
-        }
-        input[type="text"] {
-            width: 70%; padding: 15px 25px; border-radius: 15px; border: 1px solid var(--border);
-            background: rgba(0,0,0,0.3); color: white; font-size: 16px; outline: none; transition: 0.3s;
-        }
-        input[type="text"]:focus { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0,251,255,0.1); }
-
-        /* Staff Sectie */
-        .staff-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px; max-width: 1100px; margin: 50px auto; padding: 0 20px;
-        }
-        .staff-card {
-            background: var(--card-bg); border: 1px solid var(--border);
-            padding: 30px; border-radius: 24px; text-align: center; transition: 0.3s;
-        }
-        .staff-card:hover { transform: translateY(-10px); border-color: var(--cyan); }
-        .staff-img { width: 80px; height: 80px; border-radius: 20px; margin-bottom: 15px; background: #222; }
-        .role { font-size: 11px; font-weight: 900; text-transform: uppercase; color: var(--cyan); letter-spacing: 1px; }
-        .name { font-size: 20px; font-weight: 700; margin-top: 5px; }
-
-        footer { padding: 50px; text-align: center; color: #444; font-size: 13px; border-top: 1px solid var(--border); }
+        body { background-color: #050505; font-family: 'Plus Jakarta Sans', sans-serif; color: white; }
+        .font-sync { font-family: 'Syncopate', sans-serif; }
+        .cyan-glow { text-shadow: 0 0 20px rgba(0, 251, 255, 0.4); }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .cyan-border { border-color: #00FBFF; }
+        .bg-storm { background: linear-gradient(rgba(5,5,5,0.8), rgba(5,5,5,1)), url('https://wallpaperaccess.com/full/1151245.jpg'); background-size: cover; background-position: center; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">StormCraft</div>
-        <div class="links">
-            <a href="#">Home</a>
-            <a href="https://shop.stormcraft.nl">Shop</a>
-            <a href="#search">Zoek Speler</a>
-            <a href="#staff">Staff</a>
+    <nav class="fixed w-full z-50 px-8 py-6 flex justify-between items-center glass border-b border-white/5">
+        <div class="font-sync text-xl tracking-widest text-[#00FBFF]">STORMCRAFT</div>
+        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wider">
+            <a href="#" class="hover:text-[#00FBFF] transition">Home</a>
+            <a href="https://shop.stormcraft.nl" class="hover:text-[#00FBFF] transition">Webshop</a>
+            <a href="#staff" class="hover:text-[#00FBFF] transition">Staff</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="online-tag">● 18 Spelers Online</div>
-        <h1>STORM<span>CRAFT</span></h1>
-        <div class="ip-box" onclick="copyIP()">
-            <div style="text-align: left;">
-                <div style="font-size: 10px; font-weight: 900; color: #666; text-transform: uppercase;">Server Adres</div>
-                <div class="ip-address">PLAY.STORMCRAFT.NL</div>
+    <section class="h-screen flex flex-col items-center justify-center text-center px-4 bg-storm">
+        <div class="mb-6 px-4 py-1 border border-[#00FBFF] bg-[#00FBFF]/10 text-[#00FBFF] text-[10px] font-black uppercase tracking-[0.2em] rounded-full">
+            Nu Online: Teams Update
+        </div>
+        <h1 class="font-sync text-6xl md:text-8xl mb-4 tracking-tighter">STORM<span class="text-[#00FBFF] cyan-glow">CRAFT</span></h1>
+        <p class="max-w-xl text-gray-400 text-lg mb-10">De meest exclusieve survival ervaring van Nederland. Join onze community en bouw je eigen imperium.</p>
+        
+        <div onclick="copyIP()" class="glass p-6 rounded-3xl flex items-center justify-between w-full max-w-lg cursor-pointer hover:scale-105 transition-transform duration-300 border-white/10 hover:border-[#00FBFF]/50">
+            <div class="text-left">
+                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Server Adres</p>
+                <p class="font-sync text-2xl text-[#00FBFF]">PLAY.STORMCRAFT.NL</p>
             </div>
-            <div class="copy-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <div class="bg-[#00FBFF] p-3 rounded-xl text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             </div>
         </div>
     </section>
 
-    <section id="search" class="search-section">
-        <div class="search-container">
-            <h2 style="font-family: 'Syncopate'; font-size: 24px;">Speler Statistieken</h2>
-            <p style="color: #777; margin-bottom: 30px;">Bekijk de kills, teams en playtime van elke speler.</p>
-            <input type="text" placeholder="Gebruikersnaam...">
-            <button style="background: var(--cyan); border: none; padding: 16px 30px; border-radius: 15px; font-weight: 800; cursor: pointer; margin-left: 10px;">ZOEK</button>
-        </div>
-    </section>
-
-    <section id="staff" style="padding-bottom: 100px;">
-        <h2 style="text-align: center; font-family: 'Syncopate';">Ons Team</h2>
-        <div class="staff-grid">
-            <div class="staff-card">
-                <div class="staff-img" style="background-image: url('https://mc-heads.net/avatar/Milan/100'); background-size: cover;"></div>
-                <div class="role">Owner</div>
-                <div class="name">Milan</div>
+    <section id="staff" class="py-24 px-8 max-w-6xl mx-auto">
+        <h2 class="font-sync text-3xl mb-16 text-center">HET <span class="text-[#00FBFF]">TEAM</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-[2rem] text-center hover:border-[#00FBFF]/30 transition">
+                <img src="https://mc-heads.net/avatar/Milan/100" class="w-20 h-20 mx-auto mb-6 rounded-2xl shadow-lg shadow-[#00FBFF]/20" alt="Milan">
+                <p class="text-[10px] font-black text-[#00FBFF] uppercase tracking-widest mb-1">Eigenaar</p>
+                <h3 class="text-xl font-bold">Milan</h3>
             </div>
-            <div class="staff-card">
-                <div class="staff-img" style="background-image: url('https://mc-heads.net/avatar/Steve/100'); background-size: cover;"></div>
-                <div class="role">Admin</div>
-                <div class="name">AdminSpeler</div>
+            <div class="glass p-8 rounded-[2rem] text-center hover:border-[#00FBFF]/30 transition">
+                <img src="https://mc-heads.net/avatar/Steve/100" class="w-20 h-20 mx-auto mb-6 rounded-2xl" alt="Staff">
+                <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Admin</p>
+                <h3 class="text-xl font-bold">AdminNaam</h3>
             </div>
-            <div class="staff-card">
-                <div class="staff-img" style="background-image: url('https://mc-heads.net/avatar/Alex/100'); background-size: cover;"></div>
-                <div class="role">Developer</div>
-                <div class="name">DevMember</div>
+            <div class="glass p-8 rounded-[2rem] text-center hover:border-[#00FBFF]/30 transition">
+                <img src="https://mc-heads.net/avatar/Alex/100" class="w-20 h-20 mx-auto mb-6 rounded-2xl" alt="Staff">
+                <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Developer</p>
+                <h3 class="text-xl font-bold">DevNaam</h3>
             </div>
         </div>
     </section>
 
-    <footer>
-        &copy; 2026 StormCraft Network. Niet gelieerd aan Mojang AB.
+    <footer class="py-12 border-t border-white/5 text-center text-gray-600 text-xs tracking-widest uppercase">
+        &copy; 2026 StormCraft Network • Geen officiële Minecraft service
     </footer>
 
     <script>
         function copyIP() {
             navigator.clipboard.writeText("play.stormcraft.nl");
-            alert("IP Gekopieerd naar klembord!");
+            alert("IP gekopieerd! Zie je zo.");
         }
     </script>
 </body>
