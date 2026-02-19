@@ -3,181 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StormCraft | Official Network</title>
+    <title>MXProStore | StormCraft Shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { 
-            background-color: #020202; 
-            color: #ffffff; 
-            font-family: 'Inter', sans-serif; 
-            scroll-behavior: smooth;
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; }
+        .product-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            transition: all 0.3s ease;
         }
-
-        /* --- STORM BANNER ANIMATIE --- */
-        @keyframes flash {
-            0%, 90%, 100% { opacity: 0; }
-            92% { opacity: 0.4; }
-            94% { opacity: 0.1; }
-            96% { opacity: 0.6; }
-        }
-        .lightning-flash {
-            position: absolute;
-            inset: 0;
-            background: white;
-            animation: flash 6s infinite;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        /* Staff Kaarten */
-        .staff-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
-        }
-        .border-owner { border-bottom: 4px solid #00fbff; }
-        .border-owner:hover { box-shadow: 0 0 40px rgba(0, 251, 255, 0.2); transform: translateY(-5px); }
-        
-        .border-mod { border-bottom: 4px solid #64748b; }
-        .border-mod:hover { box-shadow: 0 0 30px rgba(255, 255, 255, 0.1); transform: translateY(-5px); }
-
-        .bg-glass { background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(15px); }
+        .product-card:hover { border-color: #00fbff; transform: translateY(-3px); }
+        .cart-sidebar { background: #0a0a0a; border-left: 1px solid #1a1a1a; }
+        .accent-glow { text-shadow: 0 0 15px rgba(0, 251, 255, 0.4); }
     </style>
 </head>
-<body>
+<body class="flex">
 
-    <nav class="fixed top-0 w-full z-[100] border-b border-white/5 bg-glass">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-            <span class="font-black text-xl tracking-tighter uppercase italic">StormCraft</span>
-            <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-                <a href="#" class="hover:text-white transition">Home</a>
-                <a href="#join" class="hover:text-white transition">Joinen</a>
-                <a href="#regels" class="hover:text-white transition">Regels</a>
-                <a href="#team" class="hover:text-white transition">Staff</a>
+    <main class="flex-1 min-h-screen p-8 lg:p-16">
+        <header class="mb-16 flex justify-between items-center">
+            <div>
+                <h1 class="text-4xl font-black italic uppercase accent-glow text-[#00fbff]">MXProStore</h1>
+                <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest font-bold">Official StormCraft Gear</p>
             </div>
-            <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                <div class="w-2 h-2 rounded-full bg-[#00fbff] animate-pulse"></div>
-                <span class="text-[10px] font-bold tracking-widest uppercase"><span id="player-count">...</span> Online</span>
+            <div class="md:hidden">
+                <button onclick="toggleCart()" class="bg-white text-black px-4 py-2 rounded-lg font-bold">Winkelwagen (<span id="cart-count-mobile">0</span>)</button>
             </div>
-        </div>
-    </nav>
+        </header>
 
-    <header class="relative h-[600px] w-full overflow-hidden bg-black flex items-center justify-center border-b border-white/5">
-        <div class="lightning-flash"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="product-grid">
+            </div>
+    </main>
+
+    <aside id="cart-sidebar" class="hidden lg:flex flex-col w-96 h-screen sticky top-0 cart-sidebar p-8">
+        <h2 class="text-xl font-black uppercase mb-8 italic">Winkelwagen</h2>
         
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-30"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/10 via-transparent to-black"></div>
+        <div id="cart-items" class="flex-1 overflow-y-auto space-y-4 pr-2">
+            <p id="empty-msg" class="text-gray-600 text-sm italic">Je winkelwagen is nog leeg...</p>
         </div>
 
-        <div class="relative z-10 text-center px-6">
-            <h1 class="text-7xl md:text-9xl font-black italic tracking-tighter text-white uppercase leading-none mb-6" 
-                style="text-shadow: 0 0 30px rgba(0, 251, 255, 0.4);">
-                StormCraft
-            </h1>
-            
-            <p class="text-gray-400 font-medium text-lg md:text-xl mb-12 tracking-wide">De nieuwe standaard in professionele survival.</p>
-
-            <div id="copy-btn" class="inline-flex items-center bg-white/5 border border-white/10 p-2 rounded-2xl cursor-pointer hover:bg-white/10 transition-all group">
-                <div class="px-8 py-2">
-                    <p class="text-[9px] font-bold text-gray-500 uppercase tracking-[0.4em] mb-1 text-left">Klik om te kopiëren</p>
-                    <p id="ip-text" class="text-2xl md:text-3xl font-black tracking-tight group-hover:text-[#00fbff] transition">PLAY.STORMCRAFT.NL</p>
-                </div>
-                <div class="bg-white text-black p-4 rounded-xl group-hover:scale-105 transition">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                </div>
+        <div class="border-t border-white/10 pt-6 mt-6">
+            <div class="flex justify-between font-bold text-lg mb-6">
+                <span>Totaal:</span>
+                <span class="text-[#00fbff]">€<span id="cart-total">0.00</span></span>
             </div>
+            <button onclick="checkout()" class="w-full bg-[#00fbff] text-black py-4 rounded-xl font-black uppercase tracking-tighter hover:scale-[1.02] transition active:scale-95">
+                Afrekenen via Tebex
+            </button>
         </div>
-    </header>
-
-    <section id="join" class="py-24 px-6 max-w-7xl mx-auto border-b border-white/5">
-        <div class="grid md:grid-cols-2 gap-12">
-            <div class="p-10 bg-white/[0.02] border border-white/5 rounded-2xl">
-                <h2 class="text-xs font-black tracking-[0.4em] text-[#00fbff] uppercase mb-6 italic">Java Edition</h2>
-                <p class="text-gray-400 text-sm">Adres: <span class="text-white font-bold uppercase tracking-widest">play.stormcraft.nl</span></p>
-                <p class="text-gray-500 text-[10px] mt-2 italic font-medium">Ondersteunt versie 1.20 en hoger</p>
-            </div>
-            <div class="p-10 bg-white/[0.02] border border-white/5 rounded-2xl">
-                <h2 class="text-xs font-black tracking-[0.4em] text-gray-400 uppercase mb-6 italic">Bedrock / PE</h2>
-                <p class="text-gray-400 text-sm">IP: <span class="text-white font-bold uppercase tracking-widest">play.stormcraft.nl</span></p>
-                <p class="text-gray-400 text-sm mt-1">Poort: <span class="text-[#00fbff] font-black text-xl">38385</span></p>
-            </div>
-        </div>
-    </section>
-
-    <section id="regels" class="py-24 px-6 max-w-4xl mx-auto border-b border-white/5">
-        <h2 class="text-center text-[10px] font-black tracking-[0.5em] text-gray-600 uppercase mb-12">Server Reglement</h2>
-        <div class="space-y-4">
-            <div class="flex items-center gap-6 p-5 bg-white/[0.01] border-l-2 border-[#00fbff] rounded-r-lg">
-                <span class="text-gray-700 font-bold">01</span>
-                <p class="text-sm text-gray-400 font-medium">Geen discriminatie, toxic gedrag of onnodige ruzie.</p>
-            </div>
-            <div class="flex items-center gap-6 p-5 bg-white/[0.01] border-l-2 border-white/10 rounded-r-lg">
-                <span class="text-gray-700 font-bold">02</span>
-                <p class="text-sm text-gray-400 font-medium">Hacks, X-Ray en andere cheats zijn verboden.</p>
-            </div>
-            <div class="flex items-center gap-6 p-5 bg-white/[0.01] border-l-2 border-white/10 rounded-r-lg">
-                <span class="text-gray-700 font-bold">03</span>
-                <p class="text-sm text-gray-400 font-medium">Respecteer elkaars eigendommen en bouwprojecten.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="py-32 px-6 max-w-7xl mx-auto">
-        <h2 class="text-center text-[10px] font-black tracking-[0.6em] text-gray-500 uppercase mb-20 italic">Het Management</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="staff-card border-owner p-12 rounded-2xl text-center">
-                <img src="https://mc-heads.net/avatar/Zentrixnl/100" class="w-20 h-20 mx-auto mb-6 rounded-lg shadow-2xl">
-                <h3 class="font-bold text-xl uppercase mb-1">Zentrixnl</h3>
-                <p class="text-[#00fbff] text-[10px] font-black uppercase tracking-widest mb-6 italic">Owner & Developer</p>
-                <p class="text-gray-500 text-xs leading-relaxed">Verantwoordelijk voor alle technische systemen.</p>
-            </div>
-            <div class="staff-card border-mod p-12 rounded-2xl text-center">
-                <img src="https://mc-heads.net/avatar/Fendino_appel/100" class="w-20 h-20 mx-auto mb-6 rounded-lg shadow-xl opacity-80">
-                <h3 class="font-bold text-xl uppercase mb-1">Fendino</h3>
-                <p class="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-6 italic">Moderator</p>
-                <p class="text-gray-500 text-xs leading-relaxed">Community-ondersteuning en handhaving.</p>
-            </div>
-            <div class="staff-card border-mod p-12 rounded-2xl text-center">
-                <img src="https://mc-heads.net/avatar/aardappelstormpy/100" class="w-20 h-20 mx-auto mb-6 rounded-lg shadow-xl opacity-80">
-                <h3 class="font-bold text-xl uppercase mb-1 italic">aardappel...</h3>
-                <p class="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-6 italic">Moderator</p>
-                <p class="text-gray-500 text-xs leading-relaxed">Toezicht op de chat en algemene orde.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-20 text-center border-t border-white/5">
-        <a href="https://discord.gg/q3KRHxfRxe" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-10 py-4 rounded-xl font-bold text-xs tracking-widest uppercase transition-all shadow-lg hover:shadow-indigo-500/20 mb-12 inline-block">Join de Community</a>
-        <p class="text-[9px] font-bold text-gray-700 uppercase tracking-[1em] mt-12">StormCraft Network 2026</p>
-    </footer>
+    </aside>
 
     <script>
-        // IP Kopiëren
-        document.getElementById('copy-btn').addEventListener('click', function() {
-            const ip = "play.stormcraft.nl";
-            const textEl = document.getElementById('ip-text');
-            navigator.clipboard.writeText(ip).then(() => {
-                const original = textEl.innerText;
-                textEl.innerText = "GEKOPIEERD";
-                textEl.style.color = "#00fbff";
-                setTimeout(() => { 
-                    textEl.innerText = original; 
-                    textEl.style.color = "white"; 
-                }, 2000);
-            });
-        });
+        // De 10 Producten
+        const products = [
+            { id: 1, name: "Storm Rank", price: 15.00, icon: "⚡", desc: "De basis rang met vette extra's." },
+            { id: 2, name: "Storm+ Rank", price: 25.00, icon: "🌀", desc: "Prioriteit en exclusieve kits." },
+            { id: 3, name: "Hurricane Rank", price: 45.00, icon: "🌪️", desc: "De ultieme status op de server." },
+            { id: 4, name: "10x Crate Keys", price: 5.00, icon: "🔑", desc: "Maak kans op zeldzame loot." },
+            { id: 5, name: "Claim Blocks (1000)", price: 2.50, icon: "🧱", desc: "Vergroot je territorium." },
+            { id: 6, name: "Custom Tag", price: 7.50, icon: "🏷️", desc: "Een unieke naam tag in de chat." },
+            { id: 7, name: "Fly Access (30d)", price: 10.00, icon: "🕊️", desc: "Vlieg door de survival wereld." },
+            { id: 8, name: "Starter Pack", price: 3.50, icon: "🎒", desc: "Full iron gear & wat eten." },
+            { id: 9, name: "Unban Token", price: 20.00, icon: "🔓", desc: "Een tweede kans (eenmalig)." },
+            { id: 10, name: "Server Sponsor", price: 100.00, icon: "💎", desc: "Help ons & krijg eeuwige roem." }
+        ];
 
-        // Live player count
-        async function updateStats() {
-            try {
-                const res = await fetch('https://api.mcstatus.io/v2/status/java/play.stormcraft.nl');
-                const data = await res.json();
-                document.getElementById('player-count').innerText = data.online ? data.players.online : "0";
-            } catch (e) { document.getElementById('player-count').innerText = "0"; }
+        let cart = [];
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card p-8 rounded-2xl">
+                    <div class="text-4xl mb-4">${p.icon}</div>
+                    <h3 class="text-xl font-bold mb-1">${p.name}</h3>
+                    <p class="text-gray-500 text-xs mb-6">${p.desc}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-black italic">€${p.price.toFixed(2)}</span>
+                        <button onclick="addToCart(${p.id})" class="bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-lg text-xs font-bold uppercase transition">Toevoegen</button>
+                    </div>
+                </div>
+            `).join('');
         }
-        updateStats(); setInterval(updateStats, 30000);
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const emptyMsg = document.getElementById('empty-msg');
+            
+            if(cart.length === 0) {
+                emptyMsg.style.display = 'block';
+                cartItems.innerHTML = '';
+            } else {
+                emptyMsg.style.display = 'none';
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5">
+                        <div>
+                            <p class="font-bold text-sm">${item.name}</p>
+                            <p class="text-[#00fbff] text-xs font-bold">€${item.price.toFixed(2)}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 text-xs font-bold uppercase">X</button>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalEl.innerText = total.toFixed(2);
+            document.getElementById('cart-count-mobile').innerText = cart.length;
+        }
+
+        function checkout() {
+            if(cart.length === 0) return alert("Je mandje is leeg!");
+            alert("Je wordt nu doorgestuurd naar de veilige betaalomgeving...");
+        }
+
+        renderProducts();
     </script>
 </body>
 </html>
