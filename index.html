@@ -3,136 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StormCraft | Professional Survival</title>
+    <title>StormCraft | Official Network</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body { 
-            background-color: #000; 
-            color: #fff; 
+            background-color: #050505; 
+            color: #ffffff; 
             font-family: 'Inter', sans-serif; 
-            letter-spacing: -0.02em;
+            scroll-behavior: smooth;
         }
-
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
-        }
-
-        .border-white-10 { border-color: rgba(255, 255, 255, 0.1); }
+        .section-border { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .accent-color { color: #00fbff; }
+        .bg-accent { background-color: #00fbff; }
         
-        .card-blur {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        .nav-glass {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
         }
 
-        .card-blur:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.2);
+        .step-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
-        .text-cyaan { color: #00fbff; }
-        .bg-cyaan { background-color: #00fbff; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .rule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            border-left: 2px solid rgba(0, 251, 255, 0.3);
+            background: rgba(255, 255, 255, 0.02);
         }
-
-        .animate-fade { animation: fadeIn 0.8s ease forwards; }
     </style>
 </head>
-<body class="hero-gradient">
+<body>
 
-    <nav class="fixed top-0 w-full z-50 border-b border-white-10 bg-black/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-cyaan rounded-md shadow-[0_0_15px_rgba(0,251,255,0.4)]"></div>
-                <span class="font-bold text-xl tracking-tighter uppercase">StormCraft</span>
-            </div>
-            <div class="hidden md:flex gap-10 text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-400">
-                <a href="#" class="hover:text-white transition">Home</a>
-                <a href="#team" class="hover:text-white transition">Team</a>
-                <a href="https://discord.gg/q3KRHxfRxe" class="hover:text-white transition">Discord</a>
-                <a href="#" class="text-cyaan italic">Store</a>
-            </div>
+    <nav class="fixed top-0 w-full z-[100] section-border nav-glass">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-cyaan animate-pulse"></span>
-                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"><span id="player-count">0</span> Online</span>
+                <span class="font-black text-lg tracking-tighter uppercase italic">StormCraft</span>
             </div>
+            <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#" class="hover:text-white transition">Home</a>
+                <a href="#join" class="hover:text-white transition">Joinen</a>
+                <a href="#regels" class="hover:text-white transition">Regels</a>
+                <a href="#team" class="hover:text-white transition">Team</a>
+            </div>
+            <a href="https://discord.gg/q3KRHxfRxe" class="bg-white text-black px-4 py-1.5 rounded text-[10px] font-bold uppercase hover:bg-gray-200 transition">Discord</a>
         </div>
     </nav>
 
-    <header class="h-screen flex flex-col items-center justify-center px-6 text-center">
-        <h1 class="text-6xl md:text-9xl font-extrabold mb-6 animate-fade">
-            STORMCRAFT
-        </h1>
-        <p class="text-gray-500 text-lg md:text-xl max-w-xl mb-12 animate-fade" style="animation-delay: 0.1s">
-            Een hoogwaardige Minecraft-ervaring. Stabiliteit, innovatie en een volwassen community.
-        </p>
-
-        <div id="copy-btn" class="group cursor-pointer animate-fade" style="animation-delay: 0.2s">
-            <div class="border border-white-10 px-8 py-5 flex items-center gap-8 group-hover:border-cyaan/50 transition-all duration-500">
-                <div class="text-left">
-                    <p class="text-[9px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-1">Server Address</p>
-                    <p id="ip-text" class="text-2xl md:text-3xl font-bold tracking-tight">PLAY.STORMCRAFT.NL</p>
+    <header class="pt-40 pb-20 px-6 text-center section-border">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-6 italic uppercase">Beyond Survival.</h1>
+            <p class="text-gray-500 text-lg md:text-xl font-medium mb-12 max-w-2xl mx-auto">
+                Een professioneel Minecraft netwerk gericht op stabiliteit, innovatie en een eerlijke speelervaring voor iedereen.
+            </p>
+            
+            <div id="copy-btn" class="inline-flex items-center gap-6 p-1 border border-white/10 rounded-lg bg-white/5 cursor-pointer hover:border-white/20 transition">
+                <div class="pl-6 py-3">
+                    <span class="block text-[9px] text-gray-500 uppercase font-bold tracking-widest text-left">Directe Toegang</span>
+                    <span id="ip-text" class="text-xl md:text-2xl font-bold tracking-tight">PLAY.STORMCRAFT.NL</span>
                 </div>
-                <div class="w-px h-10 bg-white/10 group-hover:bg-cyaan/30 transition"></div>
-                <svg class="text-gray-500 group-hover:text-cyaan transition" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <div class="bg-white text-black p-4 rounded-md">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </div>
             </div>
         </div>
     </header>
 
-    <section id="team" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
-            <div>
-                <h2 class="text-4xl font-bold mb-4">Het Team</h2>
-                <p class="text-gray-500 max-w-sm tracking-tight">Professionele ondersteuning en technische ontwikkeling achter de schermen.</p>
-            </div>
-            <div class="h-px flex-1 bg-white/10 hidden md:block mx-10 mb-4"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="card-blur border border-white-10 p-10">
-                <img src="https://mc-heads.net/avatar/Zentrixnl/100" class="w-16 h-16 mb-8 filter grayscale hover:grayscale-0 transition duration-500">
-                <h3 class="text-xl font-bold mb-1 uppercase tracking-tight">Zentrixnl</h3>
-                <p class="text-cyaan text-[10px] font-bold uppercase tracking-[0.2em] mb-6">Owner & Developer</p>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Verantwoordelijk voor de volledige technische infrastructuur en softwarematige ontwikkeling van de server.
-                </p>
-            </div>
-
-            <div class="card-blur border border-white-10 p-10">
-                <img src="https://mc-heads.net/avatar/Fendino_appel/100" class="w-16 h-16 mb-8 filter grayscale hover:grayscale-0 transition duration-500">
-                <h3 class="text-xl font-bold mb-1 uppercase tracking-tight">Fendino</h3>
-                <p class="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">Moderator</p>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Beheert de algemene orde binnen de community en biedt directe ondersteuning aan spelers waar nodig.
-                </p>
-            </div>
-
-            <div class="card-blur border border-white-10 p-10">
-                <img src="https://mc-heads.net/avatar/aardappelstormpy/100" class="w-16 h-16 mb-8 filter grayscale hover:grayscale-0 transition duration-500">
-                <h3 class="text-xl font-bold mb-1 uppercase tracking-tight">Aardappelstormpy</h3>
-                <p class="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">Moderator</p>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Ondersteunt bij het monitoren van de chat en draagt bij aan een veilige speelomgeving voor alle gebruikers.
-                </p>
+    <section id="join" class="py-24 px-6 section-border">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-xs font-black tracking-[0.4em] accent-color uppercase mb-12 text-center">Protocol: Hoe te joinen</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="step-card p-8 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3 italic uppercase">
+                        <span class="text-gray-600 text-3xl">01</span> Java Edition
+                    </h3>
+                    <ul class="text-gray-400 text-sm space-y-3">
+                        <li>1. Start Minecraft op (Versie 1.20+)</li>
+                        <li>2. Ga naar <span class="text-white">Multiplayer</span> &gt; <span class="text-white">Add Server</span></li>
+                        <li>3. Server Adres: <span class="text-white">play.stormcraft.nl</span></li>
+                        <li>4. Sla op en start je avontuur.</li>
+                    </ul>
+                </div>
+                <div class="step-card p-8 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3 italic uppercase">
+                        <span class="text-gray-600 text-3xl">02</span> Bedrock Edition
+                    </h3>
+                    <ul class="text-gray-400 text-sm space-y-3">
+                        <li>1. Ga naar het <span class="text-white">Servers</span> tabblad</li>
+                        <li>2. Klik op <span class="text-white">Add Server</span></li>
+                        <li>3. Name: <span class="text-white">StormCraft</span></li>
+                        <li>4. IP: <span class="text-white">play.stormcraft.nl</span> | Port: <span class="text-white">19132</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 border-t border-white-10 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="text-left">
-                <p class="font-bold text-lg tracking-tighter uppercase mb-2">StormCraft</p>
-                <p class="text-gray-500 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 Alle rechten voorbehouden.</p>
-            </div>
-            <div class="flex gap-10">
-                <a href="https://discord.gg/q3KRHxfRxe" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-cyaan transition">Discord Protocol</a>
-                <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition">Terms of Service</a>
+    <section id="regels" class="py-24 px-6 section-border bg-white/[0.01]">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-xs font-black tracking-[0.4em] accent-color uppercase mb-12 text-center">Algemene Richtlijnen</h2>
+            <div class="space-y-4">
+                <div class="rule-item">
+                    <span class="font-bold text-white">01</span>
+                    <p class="text-gray-400 text-sm"><span class="text-white font-bold">Respecteer elkaar:</span> Toxic gedrag, discriminatie of onnodig provoceren wordt niet getolereerd.</p>
+                </div>
+                <div class="rule-item">
+                    <span class="font-bold text-white">02</span>
+                    <p class="text-gray-400 text-sm"><span class="text-white font-bold">Geen Modificaties:</span> Het gebruik van hacks, x-ray of andere cheats die een oneerlijk voordeel geven resulteren in een permanente ban.</p>
+                </div>
+                <div class="rule-item">
+                    <span class="font-bold text-white">03</span>
+                    <p class="text-gray-400 text-sm"><span class="text-white font-bold">Geen Griefing:</span> Respecteer de bouwwerken van anderen. Onnodig slopen is verboden.</p>
+                </div>
+                <div class="rule-item">
+                    <span class="font-bold text-white">04</span>
+                    <p class="text-gray-400 text-sm"><span class="text-white font-bold">Handel eerlijk:</span> Scamming is verboden. Houd de economie gezond en eerlijk.</p>
+                </div>
             </div>
         </div>
+    </section>
+
+    <section id="team" class="py-24 px-6 section-border">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-xs font-black tracking-[0.4em] text-gray-500 uppercase mb-16 italic">Administratie</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <img src="https://mc-heads.net/avatar/Zentrixnl/80" class="w-16 h-16 mx-auto mb-6 grayscale opacity-80 border border-white/10 rounded">
+                    <h4 class="font-bold text-sm uppercase tracking-tighter">Zentrixnl</h4>
+                    <p class="text-[10px] text-gray-500 uppercase font-bold mt-1 tracking-widest">Owner & Developer</p>
+                </div>
+                <div>
+                    <img src="https://mc-heads.net/avatar/Fendino_appel/80" class="w-16 h-16 mx-auto mb-6 grayscale opacity-80 border border-white/10 rounded">
+                    <h4 class="font-bold text-sm uppercase tracking-tighter">Fendino</h4>
+                    <p class="text-[10px] text-gray-500 uppercase font-bold mt-1 tracking-widest">Moderator</p>
+                </div>
+                <div>
+                    <img src="https://mc-heads.net/avatar/aardappelstormpy/80" class="w-16 h-16 mx-auto mb-6 grayscale opacity-80 border border-white/10 rounded">
+                    <h4 class="font-bold text-sm uppercase tracking-tighter">Aardappelstormpy</h4>
+                    <p class="text-[10px] text-gray-500 uppercase font-bold mt-1 tracking-widest">Moderator</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em]">
+        StormCraft Professional Network &copy; 2026
     </footer>
 
     <script>
@@ -149,15 +168,6 @@
                 }, 2000);
             });
         });
-
-        async function updateStats() {
-            try {
-                const res = await fetch('https://api.mcstatus.io/v2/status/java/play.stormcraft.nl');
-                const data = await res.json();
-                document.getElementById('player-count').innerText = data.online ? data.players.online : "0";
-            } catch (e) { document.getElementById('player-count').innerText = "0"; }
-        }
-        updateStats(); setInterval(updateStats, 60000);
     </script>
 </body>
 </html>
